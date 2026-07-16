@@ -29,7 +29,7 @@ The commit node is marked changed for every prompt, so ComfyUI checks the receip
 - `ALREADY_IDENTICAL` means the same key, prompt snapshot, and image bytes were already present. No file is changed.
 - A conflict stops the workflow. The node never overwrites a receipt, a finished image, or an incomplete run directory.
 
-`receipt.json` records the declared key inputs, each saved image's SHA-256 and dimensions, and a SHA-256 snapshot of the ComfyUI prompt. The prompt itself is not copied into the PNG or receipt.
+`receipt.json` records the declared key inputs, each saved image's SHA-256 and dimensions, and a SHA-256 snapshot of the ComfyUI prompt. ComfyUI's runtime cache marker is left out of that hash. The prompt itself is not copied into the PNG or receipt.
 
 ## What the key does not prove
 

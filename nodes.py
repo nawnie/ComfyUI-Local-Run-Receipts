@@ -162,8 +162,20 @@ def _encode_image(image: Any) -> tuple[bytes, int, int]:
 def _prompt_snapshot_hash(prompt: Any) -> str | None:
     if prompt is None:
         return None
+
+    def remove_runtime_markers(value: Any) -> Any:
+        if isinstance(value, dict):
+            return {
+                key: remove_runtime_markers(item)
+                for key, item in value.items()
+                if key != "is_changed"
+            }
+        if isinstance(value, (list, tuple)):
+            return [remove_runtime_markers(item) for item in value]
+        return value
+
     try:
-        return _sha256(_canonical_json(prompt).encode("utf-8"))
+        return _sha256(_canonical_json(remove_runtime_markers(prompt)).encode("utf-8"))
     except (TypeError, ValueError) as error:
         raise RunReceiptError("prompt snapshot cannot be canonicalized") from error
 

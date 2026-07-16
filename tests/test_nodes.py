@@ -135,6 +135,14 @@ class LocalRunReceiptTests(unittest.TestCase):
     def test_commit_is_never_cached(self):
         self.assertTrue(math.isnan(self.module.CommitLocalRunImages.IS_CHANGED()))
 
+    def test_prompt_hash_ignores_comfy_runtime_cache_marker(self):
+        prompt = {"1": {"class_type": "EmptyImage", "inputs": {"width": 64}}}
+        marked_prompt = {"1": {"class_type": "EmptyImage", "inputs": {"width": 64}, "is_changed": [math.nan]}}
+        self.assertEqual(
+            self.nodes._prompt_snapshot_hash(prompt),
+            self.nodes._prompt_snapshot_hash(marked_prompt),
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
