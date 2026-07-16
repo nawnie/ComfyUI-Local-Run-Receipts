@@ -1,0 +1,40 @@
+{
+  "1": {
+    "class_type": "EmptyImage",
+    "inputs": {
+      "width": 128,
+      "height": 128,
+      "batch_size": 1,
+      "color": 0
+    }
+  },
+  "2": {
+    "class_type": "LocalRunReceiptKey",
+    "inputs": {
+      "namespace": "demoapi.org",
+      "label": "Local receipt starter v1",
+      "seed": 20260716,
+      "parameters_json": "{\"height\":128,\"source\":\"empty-image\",\"width\":128}",
+      "parent_run_key": ""
+    }
+  },
+  "3": {
+    "class_type": "LocalRunReceiptCommitImage",
+    "inputs": {
+      "images": [
+        "1",
+        0
+      ],
+      "run_key": [
+        "2",
+        0
+      ],
+      "canonical_record": [
+        "2",
+        1
+      ],
+      "output_subfolder": "local-run-receipts",
+      "filename_prefix": "starter"
+    }
+  }
+}

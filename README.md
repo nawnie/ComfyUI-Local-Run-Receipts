@@ -55,6 +55,18 @@ After the Registry listing is published, install `local-run-receipts` from Comfy
 
 The node accepts only safe relative output paths. It cannot write outside ComfyUI's output directory.
 
+## Run the no-model starter
+
+`examples/receipt-starter-api.json` is a small ComfyUI prompt that makes a 128px empty image and commits it with a receipt. It does not load a checkpoint or consume GPU inference time.
+
+After installing the node and starting ComfyUI locally, run:
+
+```text
+python examples/run_receipt_starter.py
+```
+
+The helper talks only to `127.0.0.1:8188` by default. Use `--port` when your local ComfyUI runs on another loopback port. Run it a second time to see `ALREADY_IDENTICAL`; change a declared value in the JSON to deliberately produce a new key.
+
 ## Development checks
 
 Run the built-in tests with a ComfyUI Python environment:
