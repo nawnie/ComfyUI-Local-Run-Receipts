@@ -1,5 +1,6 @@
 import importlib.util
 import json
+import math
 from pathlib import Path
 import sys
 import tempfile
@@ -130,6 +131,9 @@ class LocalRunReceiptTests(unittest.TestCase):
         commit.commit_images([self.image(0.2)], run_key, record, "receipts", "image", {"1": {"seed": 12}})
         with self.assertRaisesRegex(self.nodes.RunReceiptError, "stored receipt"):
             commit.commit_images([self.image(0.2)], run_key, record, "receipts", "image", {"1": {"seed": 13}})
+
+    def test_commit_is_never_cached(self):
+        self.assertTrue(math.isnan(self.module.CommitLocalRunImages.IS_CHANGED()))
 
 
 if __name__ == "__main__":

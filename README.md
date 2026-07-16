@@ -21,6 +21,8 @@ output/
 
 The key directory is reserved before any image is written. Image files are written first; `receipt.json` is the commit marker and is written last.
 
+The commit node is marked changed for every prompt, so ComfyUI checks the receipt instead of replaying a cached output-node result.
+
 ## Results
 
 - `CREATED` means the images and receipt were written for the first time.

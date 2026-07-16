@@ -249,6 +249,11 @@ class CommitLocalRunImages:
             "hidden": {"prompt": "PROMPT"},
         }
 
+    @classmethod
+    def IS_CHANGED(cls, **_kwargs: Any) -> float:
+        """Force each output-node invocation to inspect the existing receipt."""
+        return float("nan")
+
     def _receipt_response(
         self,
         status: str,
