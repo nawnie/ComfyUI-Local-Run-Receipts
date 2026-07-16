@@ -1,0 +1,21 @@
+[project]
+name = "local-run-receipts"
+version = "1.0.0"
+description = "Save ComfyUI images with a stable run key, a local receipt, and collision detection."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+dependencies = []
+classifiers = [
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Repository = "https://github.com/nawnie/ComfyUI-Local-Run-Receipts"
+Documentation = "https://github.com/nawnie/ComfyUI-Local-Run-Receipts#readme"
+"Bug Tracker" = "https://github.com/nawnie/ComfyUI-Local-Run-Receipts/issues"
+
+[tool.comfy]
+PublisherId = "nawnie"
+DisplayName = "Local Run Receipts"
+requires-comfyui = ">=0.28.0"
